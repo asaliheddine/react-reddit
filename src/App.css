@@ -21,6 +21,7 @@
 .rating-icon{
   margin: 5px;
   font-size: 1.2em;
+  cursor:pointer;
 }
 
 .rating-up{

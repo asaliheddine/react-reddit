@@ -28,7 +28,7 @@ export default class App extends React.Component {
     post.createdOn = new Date();
     post.upvote=0;
     post.downvote=0;
-    this.setState({
+    this.updateState({
       posts: [post, ...this.state.posts]
     })
   }
@@ -41,10 +41,7 @@ export default class App extends React.Component {
     });
 
     post.votes++;
-
-    this.setState({
-      posts
-    });
+    this.onVoteChanged(posts);
   }
 
   onDownVote = (postId) => {
@@ -56,13 +53,23 @@ export default class App extends React.Component {
 
     post.votes--;
 
-    this.setState({
+    this.onVoteChanged(posts);
+    
+  }
+
+  onVoteChanged = (posts) =>{
+    posts.sort((a, b) => {
+      if (a.votes > b.votes) return -1;
+      return 1;
+    })
+    
+    this.updateState({
       posts
     });
   }
   
   togglePostForm = () => {
-    this.setState({
+    this.updateState({
       showPostForm: !this.state.showPostForm
     })
   }
@@ -74,6 +81,12 @@ export default class App extends React.Component {
   constructor() {
     super();
   }
+
+  updateState = (newState) => {
+   
+    this.setState(newState);
+  }
+
   render() {
       return (
         <div className="app">
