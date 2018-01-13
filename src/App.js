@@ -42,8 +42,7 @@ export default class App extends React.Component {
 
  
   togglePostForm = () => {
-    var store = this.props.store;
-    store.dispatch({
+    this.store.dispatch({
       type: "SHOW_POST_FORM"
     });
   }
