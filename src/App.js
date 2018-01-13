@@ -9,30 +9,15 @@ import Modal from './components/Modal';
 import uuid from 'uuid/v4';
 
 export default class App extends React.Component {
-
-  // state = {
-  //   posts:[
-  //     {id: uuid(), title: "My first post", author:"rajesh", url:"http://google.com", createdOn: new Date(),votes:0,upvote:0,downvote:0},
-  //     {id: uuid(), title: "My second post", author:"smeeta", url:"http://google.com", createdOn: new Date(),votes:0,upvote:0,downvote:0},
-  //     {id: uuid(), title: "My third post", author:"rajesh", url:"http://google.com", createdOn: new Date(),votes:0,upvote:0,downvote:0},
-  //     {id: uuid(), title: "My fourth post", author:"urvashi", url:"http://google.com", createdOn: new Date(),votes:0,upvote:0,downvote:0},
-  //     {id: uuid(), title: "My fifth post", author:"jai", url:"http://google.com", createdOn: new Date(),votes:0,upvote:0,downvote:0},
-  //   ],
-
-  //   showPostForm: false
-  // }
-
+  
   onPostSubmit = (e, post) => {
     e.preventDefault();
     post.id = uuid();
     post.createdOn = new Date();
     post.upvote=0;
     post.downvote=0;
-    
-    // this.updateState({
-    //   posts: [post, ...this.state.posts]
-    // })
-    
+    post.votes = 0;
+
     this.store.dispatch({
       type: "ADD_POST",
       payload: {
@@ -42,26 +27,13 @@ export default class App extends React.Component {
   }
 
   onUpVote = (postId) => {
-    // var posts = Object.assign([], this.state.posts);
-    // console.log(posts);
-    // var post = posts.find((post) => {
-    //   return post.id == postId;
-    // });
-    // post.votes++;
     this.store.dispatch({
       type: "UP_VOTE",
       postId: postId
     });
-    //this.onVoteChanged(posts);
   }
 
   onDownVote = (postId) => {
-    // var posts = Object.assign([], this.state.posts);
-    // console.log(posts);
-    // var post = posts.find((post) => {
-    //   return post.id == postId;
-    // });
-    // post.votes--;
     this.store.dispatch({
       type: "DOWN_VOTE",
       postId: postId
@@ -91,8 +63,8 @@ export default class App extends React.Component {
   }
 
   render() {
-      let state = this.props.store.getState();
-      console.log("State from redux: ", this.props.state);
+      let state = this.store.getState();
+      console.log("State from redux: ", state);
       return (
         <div className="app">
             <Header onTogglePostForm={this.togglePostForm} />
