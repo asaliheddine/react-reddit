@@ -12,11 +12,11 @@ export default class App extends React.Component {
 
   state = {
     posts:[
-      {id: uuid(), title: "My first post", author:"rajesh", url:"http://google.com", createdOn: new Date()},
-      {id: uuid(), title: "My second post", author:"smeeta", url:"http://google.com", createdOn: new Date()},
-      {id: uuid(), title: "My third post", author:"rajesh", url:"http://google.com", createdOn: new Date()},
-      {id: uuid(), title: "My fourth post", author:"urvashi", url:"http://google.com", createdOn: new Date()},
-      {id: uuid(), title: "My fifth post", author:"jai", url:"http://google.com", createdOn: new Date()}
+      {id: uuid(), title: "My first post", author:"rajesh", url:"http://google.com", createdOn: new Date(),votes:0,upvote:0,downvote:0},
+      {id: uuid(), title: "My second post", author:"smeeta", url:"http://google.com", createdOn: new Date(),votes:0,upvote:0,downvote:0},
+      {id: uuid(), title: "My third post", author:"rajesh", url:"http://google.com", createdOn: new Date(),votes:0,upvote:0,downvote:0},
+      {id: uuid(), title: "My fourth post", author:"urvashi", url:"http://google.com", createdOn: new Date(),votes:0,upvote:0,downvote:0},
+      {id: uuid(), title: "My fifth post", author:"jai", url:"http://google.com", createdOn: new Date(),votes:0,upvote:0,downvote:0},
     ],
 
     showPostForm: false
@@ -26,11 +26,41 @@ export default class App extends React.Component {
     e.preventDefault();
     post.id = uuid();
     post.createdOn = new Date();
+    post.upvote=0;
+    post.downvote=0;
     this.setState({
       posts: [post, ...this.state.posts]
     })
   }
 
+  onUpVote = (postId) => {
+    var posts = Object.assign([], this.state.posts);
+    console.log(posts);
+    var post = posts.find((post) => {
+      return post.id == postId;
+    });
+
+    post.votes++;
+
+    this.setState({
+      posts
+    });
+  }
+
+  onDownVote = (postId) => {
+    var posts = Object.assign([], this.state.posts);
+    console.log(posts);
+    var post = posts.find((post) => {
+      return post.id == postId;
+    });
+
+    post.votes--;
+
+    this.setState({
+      posts
+    });
+  }
+  
   togglePostForm = () => {
     this.setState({
       showPostForm: !this.state.showPostForm
@@ -48,7 +78,10 @@ export default class App extends React.Component {
       return (
         <div className="app">
             <Header onTogglePostForm={this.togglePostForm} />
-            <PostList posts = {this.state.posts} />
+            <PostList
+               onUpVote={this.onUpVote}
+               onDownVote={this.onDownVote}
+               posts = {this.state.posts} />
             <Footer />
             <Modal show={this.state.showPostForm} onClose={this.onClose}>
                 <PostForm onPostSubmit={this.onPostSubmit} />

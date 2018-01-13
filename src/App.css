@@ -13,3 +13,19 @@
   margin: 5px;
   padding: 5px;
 }
+
+.post-rating, post-body  {
+  float: left;
+}
+
+.rating-icon{
+  margin: 5px;
+  font-size: 1.5em;
+}
+
+.rating-up{
+  background-color: greenyellow;
+}
+.rating-down{
+  background-color: red;
+}

@@ -6,7 +6,10 @@ const PostList =   (props) => {
     var posts = props.posts;
     var postUI = posts.map((post) => {
         return (
-            <Post key={post.id} post = {post} />
+            <Post 
+                onUpVote={props.onUpVote}
+                onDownVote={props.onDownVote} 
+                key={post.id} post = {post} />
         );
     })
     return (
