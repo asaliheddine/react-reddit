@@ -59,10 +59,9 @@ export default class App extends React.Component {
 
   onVoteChanged = (posts) =>{
     posts.sort((a, b) => {
-      if (a.votes > b.votes) return -1;
-      return 1;
+      return (b.votes - a.votes);
     })
-    
+
     this.updateState({
       posts
     });
@@ -82,9 +81,38 @@ export default class App extends React.Component {
     super();
   }
 
+  log = []
+
   updateState = (newState) => {
-   
+    // remember the old state in a clone
+    if (this.log.length === 0) {
+      this.log.push(JSON.parse(JSON.stringify(this.state)));
+    }
+    this.log.push(JSON.parse(JSON.stringify(newState)));
     this.setState(newState);
+  }
+
+  replay = () => {
+      console.log("replaying...", this.log);
+      if (this.log.length === 0) {
+          console.warn("No state to replay yet");
+          return;
+      }
+      var idx = -1;
+      var interval = setInterval (() => {
+          idx++;
+          if (idx === this.log.length -1) {
+              clearInterval(interval);
+          }
+          this.setState(this.log[idx]);
+      }, 1000);
+  }
+  componentDidMount() {
+    document.onkeydown = (e) => {
+        if (e.altKey && e.shiftKey && e.which === 82) { // ALT+SHIFT+R(eplay)
+         this.replay();
+        }
+    }
   }
 
   render() {
