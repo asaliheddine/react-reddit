@@ -3,7 +3,7 @@ import moment from 'moment';
 import Rating from './Rating';
 
 const Post =   (props) => {
-    const {post, onUpVote, onDownVote} = props;
+    const {post, onUpVote, onDownVote, comments, onShowComments} = props;
     return (
         <div className="post" >
             <div className="post-rating">
@@ -15,8 +15,13 @@ const Post =   (props) => {
             <div className="post-body">
                 <h3><a href={post.url} target="_blank">{post.title}</a></h3>
                 <footer>
-                    submitted {moment(post.createdOn, "YYYYMMDD").fromNow()} 
-                    {" "} by {post.author}
+                    <div>
+                        submitted {moment(post.createdOn, "YYYYMMDD").fromNow()} 
+                        {" "} by {post.author}
+                    </div>
+                    <div>
+                       <a onClick={(e)=>{onShowComments(e,post.id)}} href="#">{comments.length} {" "} comments</a>
+                    </div>
                 </footer>  
             </div> 
         </div>

@@ -47,8 +47,23 @@ export default class App extends React.Component {
     });
   }
 
+  // Modal close
   onClose = () => {
     this.togglePostForm();
+  }
+
+  onShowComments = (e, postId) => {
+    alert(postId);
+    var comments = this.store.getState().comments;
+    console.log("ALL COMMENTS: ", comments);
+    var postComments = comments.filter((comment) => {
+      return comment.postId == postId;
+    })
+
+    console.log("POST COMMENTS: ", postComments);
+    this.setState({
+      postComments: postComments
+    });
   }
 
   constructor(props) {
@@ -70,6 +85,8 @@ export default class App extends React.Component {
             <PostList
                onUpVote={this.onUpVote}
                onDownVote={this.onDownVote}
+               comments={state.comments}
+               onShowComments={this.onShowComments}
                posts = {state.posts} />
             <Footer />
             <Modal show={state.showPostForm} onClose={this.onClose}>

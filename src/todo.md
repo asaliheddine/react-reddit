@@ -1,20 +1,14 @@
 
 *inprogress
 ============
-* cancel cell edit
-* additive search
-
+* Commenting
 
 
 Features
 ==========
-* Bind table to data
-* Sorting
-* Search
-* Double click to edit
-* Export data
-* Replay state
-* header drag/drop
+* Show Posts
+* New Link Submission
+* Voting
 
 pending
 ==========
