@@ -18,7 +18,6 @@ const PostList =   (props) => {
     return (
         <div className="post-list">
             {postUI}
-            <CommentList/>
         </div>
     );
 }

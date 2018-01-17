@@ -20,7 +20,7 @@ const Post =   (props) => {
                         {" "} by {post.author}
                     </div>
                     <div>
-                       <a onClick={(e)=>{onShowComments(e,post.id)}} href="#">{comments.length} {" "} comments</a>
+                       <a href={`/comments/${post.id}`} onClick={(e)=>{onShowComments(e,post.id)}} >{comments.length} {" "} comments</a>
                     </div>
                 </footer>  
             </div> 
