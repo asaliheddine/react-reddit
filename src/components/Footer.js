@@ -1,11 +1,9 @@
 import React from 'react';
 
 const Footer= () => {
-    return (
-        <div className="footer">
-              &copy;Algorisys Technologies 
-              <span>press ALT+SHIFT+R to replay</span>
-        </div>
-    );
+    return <footer className="site-footer">
+        &copy;Algorisys Technologies
+        <span>press ALT+SHIFT+R to replay</span>
+      </footer>;
 }
 export default Footer;

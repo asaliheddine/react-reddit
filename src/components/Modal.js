@@ -25,18 +25,21 @@ export default class Modal extends React.Component {
         maxWidth: 500,
         minHeight: 300,
         margin: '0 auto',
-        padding: 30
+        padding: 10
       };
   
       return (
         <div className="backdrop" style={backdropStyle}>
           <div className="modal" style={modalStyle}>
+            <a className="mdClose" onClick={this.props.onClose}>
+              X
+              </a>
             {this.props.children}
-            <div className="footer">
-              <button onClick={this.props.onClose}>
+            {/* <div className="footer">
+              <button className="mdClose" onClick={this.props.onClose}>
                 Close
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       );

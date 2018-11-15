@@ -7,12 +7,20 @@ export default class Rating extends React.Component {
 
     render(){
         const {onUpVote,onDownVote,post} = this.props;
-        return (
-            <div className="rating-icon">
-                <div onClick={(e)=>{onUpVote()}} className="rating-up">&#x21E7;</div>
-                    {post.votes}
-                <div onClick={(e)=>{onDownVote()}} className="rating-down">&#x21E9;</div>
+        return <React.Fragment>
+            <div onClick={e => {
+                onUpVote();
+              }} className="rating-up">
+              &#x21E7;
             </div>
-        );
+            <div className="rating-no"> {post.votes}</div>
+            <div onClick={e => {
+                onDownVote();
+              }} className="rating-down">
+              &#x21E9;
+            </div>
+            {/* <div className="rating-icon">
+            </div> */}
+          </React.Fragment>;
     }
 }
