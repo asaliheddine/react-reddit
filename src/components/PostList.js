@@ -15,10 +15,14 @@ const PostList =   (props) => {
                 key={post.id} post = {post} />
         );
     })
-    return (
+    return <React.Fragment>
+       
         <div className="post-list">
+            <h3>Users Posts</h3>
             {postUI}
         </div>
-    );
+        <div className="post-list">{postUI}</div>
+        <div className="post-list">{postUI}</div>
+      </React.Fragment>;
 }
 export default PostList;

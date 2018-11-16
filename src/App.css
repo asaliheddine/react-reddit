@@ -5,7 +5,9 @@ body {
   padding-top: 40px;
 }
 .clearfix{
+  display: table;
   clear: both;
+  margin-top: 100px;
 }
 .text-center{
   text-align: center;
@@ -145,11 +147,11 @@ margin-top: 5px;
 }
 
 .site-footer {
-  position: absolute;
+  position: fixed;
   background: #8a8282;
   width: 100%;
-  bottom: 0;
-  margin-top: 10px;
+  bottom: 0px;
+  margin-top: 32px;
   height: 40px;
   display: -ms-flexbox;
   display: flex;
@@ -227,6 +229,59 @@ hr {
   margin-top: 15px;
   cursor: pointer;
 }
+
+
+/*  Comments page */
+
+.back-link {
+  color: #736f6f;
+  float: right;
+  cursor: pointer;
+  font-size: 17px;
+  margin-right: 10px;
+}
+
+.comment-heading {
+  margin-left: 10px;
+}
+.comment-list {
+  width: 80%;
+  margin: 0 auto;
+}
+.comment-list .comment {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin: 0 10px 10px;
+}
+.comment-list .comment .title {
+      color: #484646;
+      font-weight: bold;
+      font-size: 15px;
+}
+.comment-list .comment .details {
+  color: #545050;
+  font-weight: normal;
+  font-size: 14px;
+  margin: 10px 0px;
+}
+
+.author{
+  font-size: 12px;
+  color: #8e8282;
+}
+
+.author .author-name {
+ font-size: 12px;
+ color: #4e4e4e;
+ font-weight: bold;
+}
+.comment-time {
+  float: right;
+}
+
+
+
+/*  Comments page */
 
 @media screen and (max-width: 760px) {
   .post-list {

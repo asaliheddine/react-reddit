@@ -27,9 +27,9 @@ defaultState.posts.forEach((post, index) => {
     for(let i = 0; i < 5; i++) {
         let comment = {};
         comment.id = uuid();
-        comment.title = `Comment ${index} ${i}`;
-        comment.body = `Comments details for ${index}`;
-        comment.author = "user ${index}";
+        comment.title = `Title Comment ${index} ${i}`;
+        comment.body = `This is the comments details for ${index}`;
+        comment.author = `user ${index}`;
         comment.postId = post.id;
         defaultState.comments.push(comment);
     }
